@@ -17,6 +17,7 @@ public class Actor {
     Set<Film> films;
 
     public Actor() {
+        // required empty constructor for jakarta
     }
 
     public int getId() {

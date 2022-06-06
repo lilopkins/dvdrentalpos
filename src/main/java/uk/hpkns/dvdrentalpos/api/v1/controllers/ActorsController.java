@@ -4,10 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import uk.hpkns.dvdrentalpos.data.models.Actor;
-import uk.hpkns.dvdrentalpos.data.models.Language;
 import uk.hpkns.dvdrentalpos.data.repositories.ActorPagedAndSortedRepository;
 import uk.hpkns.dvdrentalpos.data.repositories.ActorRepository;
-import uk.hpkns.dvdrentalpos.data.repositories.LanguageRepository;
 
 import java.util.Optional;
 

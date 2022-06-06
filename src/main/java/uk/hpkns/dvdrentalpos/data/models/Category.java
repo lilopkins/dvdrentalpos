@@ -10,15 +10,17 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    int category_id;
+    int categoryId;
     String name;
 
-    public Category(int category_id, String name) {
-        this.category_id = category_id;
+    public Category(int categoryId, String name) {
+        this.categoryId = categoryId;
         this.name = name;
     }
 
-    public Category() { }
+    public Category() {
+        // required empty constructor for jakarta
+    }
 
     public String getName() {
         return name;

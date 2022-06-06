@@ -13,7 +13,9 @@ public class Language {
     int languageId;
     String name;
 
-    public Language() { }
+    public Language() {
+        // required empty constructor for jakarta
+    }
 
     public Language(String name) {
         this.name = name;

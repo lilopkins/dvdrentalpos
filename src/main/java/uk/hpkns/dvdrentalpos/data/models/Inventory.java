@@ -21,6 +21,12 @@ public class Inventory implements Updatable<Inventory>, HasIdentity<Integer> {
         // required empty constructor
     }
 
+    public Inventory(int id, Film film, Store store) {
+        this.id = id;
+        this.film = film;
+        this.store = store;
+    }
+
     @Override
     public Integer getId() {
         return id;

@@ -19,6 +19,11 @@ public class City implements Updatable<City>, HasIdentity<Integer> {
         // required empty constructor
     }
 
+    public City(int id, String city) {
+        this.id = id;
+        this.city = city;
+    }
+
     @Override
     public Integer getId() {
         return id;

@@ -28,6 +28,19 @@ public class Staff implements Updatable<Staff>, HasIdentity<Integer> {
         // required empty constructor
     }
 
+    public Staff(int id, String firstName, String lastName, Address address, byte[] picture, String email, Store store, boolean active, String username, String password) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.picture = picture;
+        this.email = email;
+        this.store = store;
+        this.active = active;
+        this.username = username;
+        this.password = password;
+    }
+
     @Override
     public Integer getId() {
         return id;

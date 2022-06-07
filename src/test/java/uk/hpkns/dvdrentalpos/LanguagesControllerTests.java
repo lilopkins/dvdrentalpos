@@ -1,11 +1,8 @@
 package uk.hpkns.dvdrentalpos;
 
 import org.junit.jupiter.api.BeforeEach;
-import uk.hpkns.dvdrentalpos.api.v1.controllers.CountryController;
 import uk.hpkns.dvdrentalpos.api.v1.controllers.LanguagesController;
-import uk.hpkns.dvdrentalpos.data.models.Country;
 import uk.hpkns.dvdrentalpos.data.models.Language;
-import uk.hpkns.dvdrentalpos.data.repositories.CountryRepository;
 import uk.hpkns.dvdrentalpos.data.repositories.LanguageRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

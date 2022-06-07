@@ -1,10 +1,11 @@
 package uk.hpkns.dvdrentalpos.data.models;
 
 import jakarta.persistence.*;
+import uk.hpkns.dvdrentalpos.data.HasIdentity;
 import uk.hpkns.dvdrentalpos.data.Updatable;
 
 @Entity
-public class Inventory implements Updatable<Inventory> {
+public class Inventory implements Updatable<Inventory>, HasIdentity<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -20,7 +21,8 @@ public class Inventory implements Updatable<Inventory> {
         // required empty constructor
     }
 
-    public int getId() {
+    @Override
+    public Integer getId() {
         return id;
     }
 

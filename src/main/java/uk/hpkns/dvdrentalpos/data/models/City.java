@@ -1,10 +1,11 @@
 package uk.hpkns.dvdrentalpos.data.models;
 
 import jakarta.persistence.*;
+import uk.hpkns.dvdrentalpos.data.HasIdentity;
 import uk.hpkns.dvdrentalpos.data.Updatable;
 
 @Entity
-public class City implements Updatable<City> {
+public class City implements Updatable<City>, HasIdentity<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -18,7 +19,8 @@ public class City implements Updatable<City> {
         // required empty constructor
     }
 
-    public int getId() {
+    @Override
+    public Integer getId() {
         return id;
     }
 

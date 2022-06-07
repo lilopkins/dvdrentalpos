@@ -2,12 +2,13 @@ package uk.hpkns.dvdrentalpos.data.models;
 
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import uk.hpkns.dvdrentalpos.data.HasIdentity;
 import uk.hpkns.dvdrentalpos.data.Updatable;
 
 import java.util.Set;
 
 @Entity
-public class Film implements Updatable<Film> {
+public class Film implements Updatable<Film>, HasIdentity<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -40,7 +41,23 @@ public class Film implements Updatable<Film> {
         // required empty constructor for jakarta
     }
 
-    public int getId() {
+    public Film(int filmId, String title, String description, int releaseYear, Language language, Language originalLanguage, int rentalDuration, float rentalRate, int length, float replacementCost, String rating, String specialFeatures) {
+        this.filmId = filmId;
+        this.title = title;
+        this.description = description;
+        this.releaseYear = releaseYear;
+        this.language = language;
+        this.originalLanguage = originalLanguage;
+        this.rentalDuration = rentalDuration;
+        this.rentalRate = rentalRate;
+        this.length = length;
+        this.replacementCost = replacementCost;
+        this.rating = rating;
+        this.specialFeatures = specialFeatures;
+    }
+
+    @Override
+    public Integer getId() {
         return filmId;
     }
 

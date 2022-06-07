@@ -21,6 +21,12 @@ public class Store implements Updatable<Store>, HasIdentity<Integer> {
         // required empty constructor
     }
 
+    public Store(int id, Staff manager, Address address) {
+        this.id = id;
+        this.manager = manager;
+        this.address = address;
+    }
+
     @Override
     public Integer getId() {
         return id;

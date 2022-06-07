@@ -11,21 +11,18 @@ import uk.hpkns.dvdrentalpos.data.Updatable;
 import java.util.Optional;
 
 @SuppressWarnings("unused")
-public abstract class ModelController<T extends Updatable<T>, ID, R extends CrudRepository<T, ID>, PR extends PagingAndSortingRepository<T, ID>> {
+public abstract class ModelController<T extends Updatable<T>, ID, R extends CrudRepository<T, ID> & PagingAndSortingRepository<T, ID>> {
 
     @Autowired
     private final R repository;
-    @Autowired
-    private final PR pagedRepository;
 
-    public ModelController(R repository, PR pagedRepository) {
+    public ModelController(R repository) {
         this.repository = repository;
-        this.pagedRepository = pagedRepository;
     }
 
     @GetMapping("")
     public @ResponseBody Iterable<T> getPaged(Pageable p) {
-        return pagedRepository.findAll(p);
+        return repository.findAll(p);
     }
 
     @GetMapping("/{id}")

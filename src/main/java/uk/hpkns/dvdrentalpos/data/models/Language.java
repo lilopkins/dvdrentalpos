@@ -4,9 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import uk.hpkns.dvdrentalpos.data.Updatable;
 
 @Entity
-public class Language {
+public class Language implements Updatable<Language> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -27,5 +28,10 @@ public class Language {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public void overlay(Language other) {
+        other.name = this.name;
     }
 }

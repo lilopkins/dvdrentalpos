@@ -1,11 +1,12 @@
 package uk.hpkns.dvdrentalpos.data.models;
 
 import jakarta.persistence.*;
+import uk.hpkns.dvdrentalpos.data.Updatable;
 
 import java.util.Set;
 
 @Entity
-public class Actor {
+public class Actor implements Updatable<Actor> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -30,5 +31,11 @@ public class Actor {
 
     public String getLastName() {
         return lastName;
+    }
+
+    @Override
+    public void overlay(Actor other) {
+        other.firstName = this.firstName;
+        other.lastName = this.lastName;
     }
 }

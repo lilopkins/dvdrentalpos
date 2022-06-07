@@ -1,30 +1,16 @@
 package uk.hpkns.dvdrentalpos.api.v1.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import uk.hpkns.dvdrentalpos.data.models.Language;
+import uk.hpkns.dvdrentalpos.data.repositories.LanguagePagedRepository;
 import uk.hpkns.dvdrentalpos.data.repositories.LanguageRepository;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/languages")
-public class LanguagesController {
+public class LanguagesController extends ModelController<Language, Integer, LanguageRepository, LanguagePagedRepository> {
 
-    @Autowired
-    private LanguageRepository languageRepository;
-
-    public LanguagesController(LanguageRepository languageRepository) {
-        this.languageRepository = languageRepository;
-    }
-
-    @GetMapping("")
-    public @ResponseBody Iterable<Language> getAll() {
-        return languageRepository.findAll();
-    }
-
-    @GetMapping("/{id}")
-    public @ResponseBody Optional<Language> get(@PathVariable(value = "id") int id) {
-        return languageRepository.findById(id);
+    public LanguagesController(LanguageRepository repository, LanguagePagedRepository pagedRepository) {
+        super(repository, pagedRepository);
     }
 }

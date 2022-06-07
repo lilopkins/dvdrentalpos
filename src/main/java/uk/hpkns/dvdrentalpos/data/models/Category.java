@@ -4,9 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import uk.hpkns.dvdrentalpos.data.Updatable;
 
 @Entity
-public class Category {
+public class Category implements Updatable<Category> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -28,5 +29,10 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public void overlay(Category other) {
+        other.name = this.name;
     }
 }

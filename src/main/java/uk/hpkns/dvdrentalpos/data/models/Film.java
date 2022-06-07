@@ -2,11 +2,12 @@ package uk.hpkns.dvdrentalpos.data.models;
 
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import uk.hpkns.dvdrentalpos.data.Updatable;
 
 import java.util.Set;
 
 @Entity
-public class Film {
+public class Film implements Updatable<Film> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -90,5 +91,20 @@ public class Film {
     @JsonIgnore
     public Set<Actor> getActors() {
         return actors;
+    }
+
+    @Override
+    public void overlay(Film other) {
+        other.title = this.title;
+        other.description = this.description;
+        other.releaseYear = this.releaseYear;
+        other.language = this.language;
+        other.originalLanguage = this.originalLanguage;
+        other.rentalDuration = this.rentalDuration;
+        other.rentalRate = this.rentalRate;
+        other.length = this.length;
+        other.replacementCost = this.replacementCost;
+        other.rating = this.rating;
+        other.specialFeatures = this.specialFeatures;
     }
 }

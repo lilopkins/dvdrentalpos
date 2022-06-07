@@ -1,11 +1,8 @@
 package uk.hpkns.dvdrentalpos;
 
 import org.junit.jupiter.api.BeforeEach;
-import uk.hpkns.dvdrentalpos.api.v1.controllers.ActorsController;
 import uk.hpkns.dvdrentalpos.api.v1.controllers.AddressController;
-import uk.hpkns.dvdrentalpos.data.models.Actor;
 import uk.hpkns.dvdrentalpos.data.models.Address;
-import uk.hpkns.dvdrentalpos.data.repositories.ActorRepository;
 import uk.hpkns.dvdrentalpos.data.repositories.AddressRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

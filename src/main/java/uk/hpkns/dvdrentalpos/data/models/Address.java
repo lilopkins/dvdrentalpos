@@ -23,6 +23,16 @@ public class Address implements Updatable<Address>, HasIdentity<Integer> {
         // required empty constructor
     }
 
+    public Address(int id, String address, String address2, String district, City city, String postalCode, String phone) {
+        this.id = id;
+        this.address = address;
+        this.address2 = address2;
+        this.district = district;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.phone = phone;
+    }
+
     @Override
     public Integer getId() {
         return id;

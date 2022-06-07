@@ -19,6 +19,7 @@ public class Address implements Updatable<Address> {
     String phone;
 
     public Address() {
+        // required empty constructor
     }
 
     public int getId() {

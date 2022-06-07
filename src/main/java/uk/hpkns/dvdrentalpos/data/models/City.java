@@ -15,6 +15,7 @@ public class City implements Updatable<City> {
     Country country;
 
     public City() {
+        // required empty constructor
     }
 
     public int getId() {

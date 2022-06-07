@@ -24,6 +24,7 @@ public class Rental implements Updatable<Rental> {
     Staff staff;
 
     public Rental() {
+        // required empty constructor
     }
 
     public int getId() {

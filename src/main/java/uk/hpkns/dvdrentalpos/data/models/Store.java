@@ -17,6 +17,7 @@ public class Store implements Updatable<Store> {
     Address address;
 
     public Store() {
+        // required empty constructor
     }
 
     public int getId() {

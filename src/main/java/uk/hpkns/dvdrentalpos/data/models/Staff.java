@@ -24,6 +24,7 @@ public class Staff implements Updatable<Staff> {
     String password;
 
     public Staff() {
+        // required empty constructor
     }
 
     public int getId() {

@@ -17,6 +17,7 @@ public class Inventory implements Updatable<Inventory> {
     Store store;
 
     public Inventory() {
+        // required empty constructor
     }
 
     public int getId() {

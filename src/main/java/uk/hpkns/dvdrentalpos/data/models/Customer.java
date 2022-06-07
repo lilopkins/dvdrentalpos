@@ -11,9 +11,9 @@ public class Customer implements Updatable<Customer> {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     int id;
-    //@ManyToOne
-    //@JoinColumn(name = "store_id")
-    //Store store;
+    @ManyToOne
+    @JoinColumn(name = "store_id")
+    Store store;
     String firstName;
     String lastName;
     String email;
@@ -24,6 +24,7 @@ public class Customer implements Updatable<Customer> {
     Date createDate;
 
     public Customer() {
+        // required empty constructor
     }
 
     public int getId() {

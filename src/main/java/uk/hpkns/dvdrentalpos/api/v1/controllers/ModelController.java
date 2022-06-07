@@ -11,12 +11,12 @@ import uk.hpkns.dvdrentalpos.data.Updatable;
 import java.util.Optional;
 
 @SuppressWarnings("unused")
-public abstract class ModelController<T extends Updatable<T>, ID, R extends CrudRepository<T, ID> & PagingAndSortingRepository<T, ID>> {
+public abstract class ModelController<T extends Updatable<T>, I, R extends CrudRepository<T, I> & PagingAndSortingRepository<T, I>> {
 
     @Autowired
     private final R repository;
 
-    public ModelController(R repository) {
+    protected ModelController(R repository) {
         this.repository = repository;
     }
 
@@ -26,7 +26,7 @@ public abstract class ModelController<T extends Updatable<T>, ID, R extends Crud
     }
 
     @GetMapping("/{id}")
-    public @ResponseBody Optional<T> get(@PathVariable(value = "id") ID id) {
+    public @ResponseBody Optional<T> get(@PathVariable(value = "id") I id) {
         return repository.findById(id);
     }
 
@@ -37,7 +37,7 @@ public abstract class ModelController<T extends Updatable<T>, ID, R extends Crud
     }
 
     @PutMapping("/{id}")
-    public @ResponseBody T update(@PathVariable(value = "id") ID id, @RequestBody T upd) {
+    public @ResponseBody T update(@PathVariable(value = "id") I id, @RequestBody T upd) {
         Optional<T> possiblyObj = repository.findById(id);
         if (possiblyObj.isEmpty()) throw new ResourceNotFoundException();
         T obj = possiblyObj.get();
@@ -47,7 +47,7 @@ public abstract class ModelController<T extends Updatable<T>, ID, R extends Crud
     }
 
     @DeleteMapping("/{id}")
-    public @ResponseBody void delete(@PathVariable(value = "id") ID id) {
+    public @ResponseBody void delete(@PathVariable(value = "id") I id) {
         repository.deleteById(id);
     }
 }

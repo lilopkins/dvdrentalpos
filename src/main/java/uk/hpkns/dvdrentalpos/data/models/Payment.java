@@ -24,6 +24,7 @@ public class Payment implements Updatable<Payment> {
     Date paymentDate;
 
     public Payment() {
+        // required empty constructor
     }
 
     public int getId() {

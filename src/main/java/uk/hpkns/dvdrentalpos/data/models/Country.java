@@ -15,6 +15,7 @@ public class Country implements Updatable<Country> {
     String country;
 
     public Country() {
+        // required empty constructor
     }
 
     public int getId() {

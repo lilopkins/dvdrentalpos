@@ -12,7 +12,9 @@ public class Rental implements Updatable<Rental> {
     @GeneratedValue(strategy = GenerationType.TABLE)
     int id;
     Date rentalDate;
-    // Inventory inventory;
+    @ManyToOne
+    @JoinColumn(name = "inventory_id")
+    Inventory inventory;
     @ManyToOne
     @JoinColumn(name = "customer_id")
     Customer customer;
@@ -32,6 +34,10 @@ public class Rental implements Updatable<Rental> {
         return rentalDate;
     }
 
+    public Inventory getInventory() {
+        return inventory;
+    }
+
     public Customer getCustomer() {
         return customer;
     }
@@ -47,6 +53,7 @@ public class Rental implements Updatable<Rental> {
     @Override
     public void overlay(Rental other) {
         other.rentalDate = this.rentalDate;
+        other.inventory = inventory;
         other.customer = this.customer;
         other.returnDate = this.returnDate;
         other.staff = this.staff;

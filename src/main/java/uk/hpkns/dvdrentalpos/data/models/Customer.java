@@ -28,6 +28,17 @@ public class Customer implements Updatable<Customer>, HasIdentity<Integer> {
         // required empty constructor
     }
 
+    public Customer(int id, Store store, String firstName, String lastName, String email, Address address, boolean active, Date createDate) {
+        this.id = id;
+        this.store = store;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.address = address;
+        this.active = active;
+        this.createDate = createDate;
+    }
+
     @Override
     public Integer getId() {
         return id;

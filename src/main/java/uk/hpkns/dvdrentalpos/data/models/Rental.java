@@ -28,6 +28,15 @@ public class Rental implements Updatable<Rental>, HasIdentity<Integer> {
         // required empty constructor
     }
 
+    public Rental(int id, Date rentalDate, Inventory inventory, Customer customer, Date returnDate, Staff staff) {
+        this.id = id;
+        this.rentalDate = rentalDate;
+        this.inventory = inventory;
+        this.customer = customer;
+        this.returnDate = returnDate;
+        this.staff = staff;
+    }
+
     @Override
     public Integer getId() {
         return id;

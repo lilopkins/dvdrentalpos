@@ -19,6 +19,11 @@ public class Country implements Updatable<Country>, HasIdentity<Integer> {
         // required empty constructor
     }
 
+    public Country(int id, String country) {
+        this.id = id;
+        this.country = country;
+    }
+
     @Override
     public Integer getId() {
         return id;

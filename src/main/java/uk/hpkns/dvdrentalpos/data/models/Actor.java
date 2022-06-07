@@ -22,6 +22,12 @@ public class Actor implements Updatable<Actor>, HasIdentity<Integer> {
         // required empty constructor for jakarta
     }
 
+    public Actor(int actorId, String firstName, String lastName) {
+        this.actorId = actorId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     @Override
     public Integer getId() {
         return actorId;

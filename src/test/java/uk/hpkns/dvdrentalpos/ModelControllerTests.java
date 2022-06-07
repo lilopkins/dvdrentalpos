@@ -15,8 +15,7 @@ import uk.hpkns.dvdrentalpos.data.Updatable;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -67,6 +66,9 @@ public abstract class ModelControllerTests<T extends Updatable<T> & HasIdentity<
     public void testUpdate() {
         T obj = getTestObject();
         T editObj = getEditObject();
+
+        when(repository.findById(editObj.getId())).thenReturn(Optional.empty());
+        assertThrows(ResourceNotFoundException.class, () -> controller.update(editObj.getId(), editObj));
 
         when(repository.findById(obj.getId())).thenReturn(Optional.of(obj));
         controller.update(obj.getId(), editObj);

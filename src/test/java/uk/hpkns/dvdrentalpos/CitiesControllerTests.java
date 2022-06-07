@@ -6,6 +6,7 @@ import uk.hpkns.dvdrentalpos.data.models.City;
 import uk.hpkns.dvdrentalpos.data.repositories.CityRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.mock;
 
 public class CitiesControllerTests extends ModelControllerTests<City, Integer, CityRepository, CityController> {
@@ -42,5 +43,6 @@ public class CitiesControllerTests extends ModelControllerTests<City, Integer, C
     protected void validateChangedObject(City obj) {
         assertEquals(1, obj.getId(), "id incorrect");
         assertEquals("Wolverhampton", obj.getCity(), "city name incorrect");
+        assertNull(obj.getCountry(), "country is set");
     }
 }

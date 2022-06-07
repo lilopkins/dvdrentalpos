@@ -12,6 +12,7 @@ import java.sql.Date;
 import java.time.Instant;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.mock;
 
 public class PaymentControllerTests extends ModelControllerTests<Payment, Integer, PaymentRepository, PaymentController> {
@@ -56,6 +57,9 @@ public class PaymentControllerTests extends ModelControllerTests<Payment, Intege
     protected void validateChangedObject(Payment obj) {
         assertEquals(1, obj.getId(), "id incorrect");
         assertEquals(43.21f, obj.getAmount(), "amount incorrect");
+        assertNull(obj.getRental(), "rental is set");
+        assertNull(obj.getCustomer(), "customer is set");
+        assertNull(obj.getStaff(), "staff is set");
         assertEquals(Date.from(Instant.ofEpochSecond(5)), obj.getPaymentDate(), "payment date incorrect");
     }
 }

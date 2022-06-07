@@ -33,10 +33,6 @@ public class Category implements Updatable<Category>, HasIdentity<Integer> {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Override
     public void overlay(Category other) {
         other.name = this.name;

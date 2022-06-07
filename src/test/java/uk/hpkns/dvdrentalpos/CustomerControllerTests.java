@@ -8,7 +8,7 @@ import uk.hpkns.dvdrentalpos.data.repositories.CustomerRepository;
 import java.time.Instant;
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
 public class CustomerControllerTests extends ModelControllerTests<Customer, Integer, CustomerRepository, CustomerController> {
@@ -59,6 +59,8 @@ public class CustomerControllerTests extends ModelControllerTests<Customer, Inte
         assertEquals("Karol", obj.getFirstName(), "first name incorrect");
         assertEquals("Davington", obj.getLastName(), "last name incorrect");
         assertEquals("kdavington@apaulmemorabilia.example.com", obj.getEmail(), "email correct");
+        assertNull(obj.getAddress(), "address set");
+        assertTrue(obj.isActive(), "customer not active");
         assertEquals(Date.from(Instant.EPOCH), obj.getCreateDate(), "create date correct");
     }
 }

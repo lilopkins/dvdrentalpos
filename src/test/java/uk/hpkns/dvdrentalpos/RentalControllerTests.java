@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.time.Instant;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.mock;
 
 public class RentalControllerTests extends ModelControllerTests<Rental, Integer, RentalRepository, RentalController> {
@@ -53,6 +54,9 @@ public class RentalControllerTests extends ModelControllerTests<Rental, Integer,
     protected void validateChangedObject(Rental obj) {
         assertEquals(1, obj.getId(), "id incorrect");
         assertEquals(Date.from(Instant.ofEpochSecond(1)), obj.getRentalDate(), "rental date incorrect");
+        assertNull(obj.getInventory(), "inventory is set");
+        assertNull(obj.getCustomer(), "customer is set");
+        assertNull(obj.getStaff(), "staff is set");
         assertEquals(Date.from(Instant.ofEpochSecond(34)), obj.getReturnDate(), "return date incorrect");
     }
 }

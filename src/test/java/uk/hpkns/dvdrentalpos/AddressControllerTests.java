@@ -6,6 +6,7 @@ import uk.hpkns.dvdrentalpos.data.models.Address;
 import uk.hpkns.dvdrentalpos.data.repositories.AddressRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.mock;
 
 public class AddressControllerTests extends ModelControllerTests<Address, Integer, AddressRepository, AddressController> {
@@ -54,6 +55,7 @@ public class AddressControllerTests extends ModelControllerTests<Address, Intege
         assertEquals("13 Unlucky Road", obj.getAddress(), "address incorrect");
         assertEquals("Somewhere else", obj.getAddress2(), "address 2 incorrect");
         assertEquals("Staffordshire", obj.getDistrict(), "district incorrect");
+        assertNull(obj.getCity(), "city is set");
         assertEquals("WV71AA", obj.getPostalCode(), "postal code incorrect");
         assertEquals("01632 960976", obj.getPhone(), "phone incorrect");
     }

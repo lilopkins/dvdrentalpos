@@ -60,6 +60,7 @@ public class FilmControllerTests extends ModelControllerTests<Film, Integer, Fil
     protected void validateChangedObject(Film obj) {
         assertEquals(1, obj.getId(), "id incorrect");
         assertEquals("Aeroplane!", obj.getTitle(), "title incorrect");
+        assertEquals("A man afraid to fly must ensure that a plane lands safely after the pilots become sick. Shirley you can't be serious!", obj.getDescription(), "description incorrect");
         assertEquals(1980, obj.getReleaseYear(), "release year incorrect");
         assertNull(obj.getLanguage(), "language incorrect");
         assertNull(obj.getOriginalLanguage(), "original language incorrect");

@@ -19,7 +19,8 @@ public class Language implements Updatable<Language>, HasIdentity<Integer> {
         // required empty constructor for jakarta
     }
 
-    public Language(String name) {
+    public Language(int id, String name) {
+        this.languageId = id;
         this.name = name;
     }
 

@@ -8,8 +8,8 @@ import uk.hpkns.dvdrentalpos.data.Updatable;
 public class Inventory implements Updatable<Inventory>, HasIdentity<Integer> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
     @ManyToOne
     @JoinColumn(name = "film_id")
     Film film;

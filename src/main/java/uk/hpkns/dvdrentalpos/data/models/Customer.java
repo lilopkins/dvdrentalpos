@@ -10,8 +10,8 @@ import java.util.Date;
 public class Customer implements Updatable<Customer>, HasIdentity<Integer> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
     @ManyToOne
     @JoinColumn(name = "store_id")
     Store store;

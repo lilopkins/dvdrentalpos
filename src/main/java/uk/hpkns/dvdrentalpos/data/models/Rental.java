@@ -10,8 +10,8 @@ import java.util.Date;
 public class Rental implements Updatable<Rental>, HasIdentity<Integer> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
     Date rentalDate;
     @ManyToOne
     @JoinColumn(name = "inventory_id")

@@ -10,8 +10,8 @@ import java.util.Set;
 public class Actor implements Updatable<Actor>, HasIdentity<Integer> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    int actorId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer actorId;
     String firstName;
     String lastName;
 

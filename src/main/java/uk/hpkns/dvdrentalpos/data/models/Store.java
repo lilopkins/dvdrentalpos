@@ -8,8 +8,8 @@ import uk.hpkns.dvdrentalpos.data.Updatable;
 public class Store implements Updatable<Store>, HasIdentity<Integer> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
     @ManyToOne
     @JoinColumn(name = "manager_staff_id")
     Staff manager;

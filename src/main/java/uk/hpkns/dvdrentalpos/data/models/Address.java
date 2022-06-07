@@ -8,8 +8,8 @@ import uk.hpkns.dvdrentalpos.data.Updatable;
 public class Address implements Updatable<Address>, HasIdentity<Integer> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
     String address;
     String address2;
     String district;

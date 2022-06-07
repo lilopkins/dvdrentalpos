@@ -11,8 +11,8 @@ import uk.hpkns.dvdrentalpos.data.Updatable;
 public class Language implements Updatable<Language>, HasIdentity<Integer> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    int languageId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer languageId;
     String name;
 
     public Language() {

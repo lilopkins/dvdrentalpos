@@ -11,8 +11,8 @@ import java.util.Set;
 public class Film implements Updatable<Film>, HasIdentity<Integer> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    int filmId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer filmId;
     String title;
     String description;
     int releaseYear;

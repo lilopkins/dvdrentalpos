@@ -11,8 +11,8 @@ import uk.hpkns.dvdrentalpos.data.Updatable;
 public class Category implements Updatable<Category>, HasIdentity<Integer> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    int categoryId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer categoryId;
     String name;
 
     public Category(int categoryId, String name) {

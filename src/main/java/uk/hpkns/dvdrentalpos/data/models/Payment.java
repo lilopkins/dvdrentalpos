@@ -28,6 +28,15 @@ public class Payment implements Updatable<Payment>, HasIdentity<Integer> {
         // required empty constructor
     }
 
+    public Payment(int id, Customer customer, Staff staff, Rental rental, float amount, Date paymentDate) {
+        this.id = id;
+        this.customer = customer;
+        this.staff = staff;
+        this.rental = rental;
+        this.amount = amount;
+        this.paymentDate = paymentDate;
+    }
+
     public Integer getId() {
         return id;
     }

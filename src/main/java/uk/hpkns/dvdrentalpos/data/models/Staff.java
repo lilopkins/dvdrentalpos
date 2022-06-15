@@ -9,6 +9,7 @@ public class Staff implements Updatable<Staff>, HasIdentity<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "staff_id")
     Integer id;
     String firstName;
     String lastName;

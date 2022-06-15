@@ -1,9 +1,6 @@
 package uk.hpkns.dvdrentalpos.data.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import uk.hpkns.dvdrentalpos.data.HasIdentity;
 import uk.hpkns.dvdrentalpos.data.Updatable;
 
@@ -12,11 +9,12 @@ public class Category implements Updatable<Category>, HasIdentity<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer categoryId;
+    @Column(name = "category_id")
+    Integer id;
     String name;
 
-    public Category(int categoryId, String name) {
-        this.categoryId = categoryId;
+    public Category(int id, String name) {
+        this.id = id;
         this.name = name;
     }
 
@@ -26,7 +24,7 @@ public class Category implements Updatable<Category>, HasIdentity<Integer> {
 
     @Override
     public Integer getId() {
-        return categoryId;
+        return id;
     }
 
     public String getName() {

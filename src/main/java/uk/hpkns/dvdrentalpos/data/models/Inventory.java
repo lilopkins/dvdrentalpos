@@ -9,6 +9,7 @@ public class Inventory implements Updatable<Inventory>, HasIdentity<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "inventory_id")
     Integer id;
     @ManyToOne
     @JoinColumn(name = "film_id")

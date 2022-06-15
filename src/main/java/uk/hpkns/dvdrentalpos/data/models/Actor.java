@@ -11,7 +11,8 @@ public class Actor implements Updatable<Actor>, HasIdentity<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer actorId;
+    @Column(name = "actor_id")
+    Integer id;
     String firstName;
     String lastName;
 
@@ -22,15 +23,15 @@ public class Actor implements Updatable<Actor>, HasIdentity<Integer> {
         // required empty constructor for jakarta
     }
 
-    public Actor(int actorId, String firstName, String lastName) {
-        this.actorId = actorId;
+    public Actor(Integer id, String firstName, String lastName) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
     @Override
     public Integer getId() {
-        return actorId;
+        return id;
     }
 
     public String getFirstName() {

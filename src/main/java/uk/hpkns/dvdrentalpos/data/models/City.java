@@ -9,6 +9,7 @@ public class City implements Updatable<City>, HasIdentity<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "city_id")
     Integer id;
     String city;
     @ManyToOne

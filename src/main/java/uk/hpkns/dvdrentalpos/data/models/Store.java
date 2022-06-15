@@ -9,6 +9,7 @@ public class Store implements Updatable<Store>, HasIdentity<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "store_id")
     Integer id;
     @ManyToOne
     @JoinColumn(name = "manager_staff_id")

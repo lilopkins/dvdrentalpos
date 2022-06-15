@@ -11,6 +11,7 @@ public class Customer implements Updatable<Customer>, HasIdentity<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customer_id")
     Integer id;
     @ManyToOne
     @JoinColumn(name = "store_id")

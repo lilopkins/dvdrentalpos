@@ -11,6 +11,7 @@ public class Payment implements Updatable<Payment>, HasIdentity<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "payment_id")
     Integer id;
     @ManyToOne
     @JoinColumn(name = "customer_id")

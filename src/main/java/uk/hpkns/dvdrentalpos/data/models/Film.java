@@ -12,7 +12,8 @@ public class Film implements Updatable<Film>, HasIdentity<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer filmId;
+    @Column(name = "film_id")
+    Integer id;
     String title;
     String description;
     int releaseYear;
@@ -41,8 +42,8 @@ public class Film implements Updatable<Film>, HasIdentity<Integer> {
         // required empty constructor for jakarta
     }
 
-    public Film(int filmId, String title, String description, int releaseYear, Language language, Language originalLanguage, int rentalDuration, float rentalRate, int length, float replacementCost, String rating, String specialFeatures) {
-        this.filmId = filmId;
+    public Film(int id, String title, String description, int releaseYear, Language language, Language originalLanguage, int rentalDuration, float rentalRate, int length, float replacementCost, String rating, String specialFeatures) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.releaseYear = releaseYear;
@@ -58,7 +59,7 @@ public class Film implements Updatable<Film>, HasIdentity<Integer> {
 
     @Override
     public Integer getId() {
-        return filmId;
+        return id;
     }
 
     public String getTitle() {

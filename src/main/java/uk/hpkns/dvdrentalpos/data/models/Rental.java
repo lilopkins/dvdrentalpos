@@ -11,6 +11,7 @@ public class Rental implements Updatable<Rental>, HasIdentity<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "rental_id")
     Integer id;
     Date rentalDate;
     @ManyToOne

@@ -9,6 +9,7 @@ public class Address implements Updatable<Address>, HasIdentity<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "address_id")
     Integer id;
     String address;
     String address2;

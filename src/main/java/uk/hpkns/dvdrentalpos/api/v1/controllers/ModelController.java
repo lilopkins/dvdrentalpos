@@ -11,6 +11,7 @@ import uk.hpkns.dvdrentalpos.data.Updatable;
 import java.util.Optional;
 
 @SuppressWarnings("unused")
+@CrossOrigin
 public abstract class ModelController<T extends Updatable<T>, I, R extends CrudRepository<T, I> & PagingAndSortingRepository<T, I>> {
 
     @Autowired

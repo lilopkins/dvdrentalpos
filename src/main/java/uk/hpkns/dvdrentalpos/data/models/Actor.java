@@ -1,5 +1,6 @@
 package uk.hpkns.dvdrentalpos.data.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import uk.hpkns.dvdrentalpos.data.HasIdentity;
 import uk.hpkns.dvdrentalpos.data.Updatable;
@@ -17,6 +18,7 @@ public class Actor implements Updatable<Actor>, HasIdentity<Integer> {
     String lastName;
 
     @ManyToMany(mappedBy = "actors")
+    @JsonIgnore
     Set<Film> films;
 
     public Actor() {
@@ -40,6 +42,10 @@ public class Actor implements Updatable<Actor>, HasIdentity<Integer> {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public Set<Film> getFilms() {
+        return films;
     }
 
     @Override

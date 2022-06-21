@@ -31,6 +31,7 @@ public class Film implements Updatable<Film>, HasIdentity<Integer> {
     String specialFeatures;
 
     @ManyToMany
+    @JsonIgnore
     @JoinTable(name = "film_actor", joinColumns = {
             @JoinColumn(name = "film_id", nullable = false)
     }, inverseJoinColumns = {

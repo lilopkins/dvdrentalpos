@@ -1,0 +1,14 @@
+version: '3'
+services:
+  mysql:
+    image: mariadb
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 't20s22i'
+      MYSQL_DATABASE: tsi
+      MYSQL_USERNAME: tsi
+      MYSQL_PASSWORD: t20s22i
+    volumes:
+      - ./initdb:/docker-entrypoint-initdb.d
+

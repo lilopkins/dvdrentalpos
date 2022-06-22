@@ -1,5 +1,5 @@
-Feature: Get actor list
-  As a user I need to be able to get a JSON list of actors from the database.
+Feature: Actors
+  As an API user I need to be able to get an actor from the database.
 
   Scenario: Get a JSON list of actors.
     Given The webserver is started

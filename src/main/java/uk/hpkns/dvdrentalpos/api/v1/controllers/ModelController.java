@@ -1,13 +1,17 @@
 package uk.hpkns.dvdrentalpos.api.v1.controllers;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.web.bind.annotation.*;
-import uk.hpkns.dvdrentalpos.ResourceNotFoundException;
+import uk.hpkns.dvdrentalpos.api.v1.*;
 import uk.hpkns.dvdrentalpos.data.Updatable;
+import uk.hpkns.dvdrentalpos.data.models.auth.StaffToken;
+import uk.hpkns.dvdrentalpos.data.repositories.auth.StaffTokensRepository;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @SuppressWarnings("unused")
@@ -32,12 +36,24 @@ public abstract class ModelController<T extends Updatable<T>, I, R extends CrudR
     }
 
     @PutMapping("")
+    public @ResponseBody T createSecure(HttpServletRequest request, @RequestBody T obj) {
+        AuthenticationFilter.AuthenticationResult result = (AuthenticationFilter.AuthenticationResult) request.getAttribute(AuthenticationFilter.ATTRIBUTE);
+        result.intoException();
+        return create(obj);
+    }
+
     public @ResponseBody T create(@RequestBody T obj) {
         repository.save(obj);
         return obj;
     }
 
     @PutMapping("/{id}")
+    public @ResponseBody T updateSecure(HttpServletRequest request, @PathVariable(value = "id") I id, @RequestBody T upd) {
+        AuthenticationFilter.AuthenticationResult result = (AuthenticationFilter.AuthenticationResult) request.getAttribute(AuthenticationFilter.ATTRIBUTE);
+        result.intoException();
+        return update(id, upd);
+    }
+
     public @ResponseBody T update(@PathVariable(value = "id") I id, @RequestBody T upd) {
         Optional<T> possiblyObj = repository.findById(id);
         if (possiblyObj.isEmpty()) throw new ResourceNotFoundException();
@@ -48,6 +64,12 @@ public abstract class ModelController<T extends Updatable<T>, I, R extends CrudR
     }
 
     @DeleteMapping("/{id}")
+    public @ResponseBody void deleteSecure(HttpServletRequest request, @PathVariable(value = "id") I id) {
+        AuthenticationFilter.AuthenticationResult result = (AuthenticationFilter.AuthenticationResult) request.getAttribute(AuthenticationFilter.ATTRIBUTE);
+        result.intoException();
+        delete(id);
+    }
+
     public @ResponseBody void delete(@PathVariable(value = "id") I id) {
         repository.deleteById(id);
     }

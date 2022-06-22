@@ -2,6 +2,7 @@ package uk.hpkns.dvdrentalpos.api.v1.controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.*;
+import uk.hpkns.dvdrentalpos.api.v1.AuthenticationFilter;
 import uk.hpkns.dvdrentalpos.data.models.Staff;
 import uk.hpkns.dvdrentalpos.data.models.auth.CustomerLogin;
 import uk.hpkns.dvdrentalpos.data.models.auth.CustomerToken;
@@ -33,6 +34,11 @@ public class AuthController {
         this.customerTokensRepository = customerTokensRepository;
         this.staffRepository = staffRepository;
         this.staffTokensRepository = staffTokensRepository;
+    }
+
+    @GetMapping("/status")
+    public @ResponseBody AuthenticationFilter.AuthenticationResult getStatus(HttpServletRequest request) {
+        return (AuthenticationFilter.AuthenticationResult) request.getAttribute(AuthenticationFilter.ATTRIBUTE);
     }
 
     @PostMapping("/signin")

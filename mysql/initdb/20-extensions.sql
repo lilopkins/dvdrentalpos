@@ -49,3 +49,6 @@ CREATE TRIGGER `ins_staff_token` AFTER INSERT ON `customer_tokens` FOR EACH ROW 
     DELETE FROM `customer_tokens` WHERE `valid_until` < CURRENT_TIMESTAMP;
 END;;
 DELIMITER ;
+
+-- Add example customer login
+INSERT INTO `customer_logins` (`customer_id`, `username`, `password_hash`) VALUES (1, "Mary", "8cb2237d0679ca88db6464eac60da96345513964");

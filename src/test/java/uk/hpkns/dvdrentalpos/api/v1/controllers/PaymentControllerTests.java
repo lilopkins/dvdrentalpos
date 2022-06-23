@@ -1,12 +1,8 @@
-package uk.hpkns.dvdrentalpos;
+package uk.hpkns.dvdrentalpos.api.v1.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
-import uk.hpkns.dvdrentalpos.api.v1.controllers.PaymentController;
-import uk.hpkns.dvdrentalpos.api.v1.controllers.RentalController;
 import uk.hpkns.dvdrentalpos.data.models.Payment;
-import uk.hpkns.dvdrentalpos.data.models.Rental;
 import uk.hpkns.dvdrentalpos.data.repositories.PaymentRepository;
-import uk.hpkns.dvdrentalpos.data.repositories.RentalRepository;
 
 import java.sql.Date;
 import java.time.Instant;

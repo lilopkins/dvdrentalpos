@@ -1,4 +1,4 @@
-package uk.hpkns.dvdrentalpos;
+package uk.hpkns.dvdrentalpos.api.v1.controllers;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

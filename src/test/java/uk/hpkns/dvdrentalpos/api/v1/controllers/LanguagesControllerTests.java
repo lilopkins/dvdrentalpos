@@ -1,7 +1,6 @@
-package uk.hpkns.dvdrentalpos;
+package uk.hpkns.dvdrentalpos.api.v1.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
-import uk.hpkns.dvdrentalpos.api.v1.controllers.LanguagesController;
 import uk.hpkns.dvdrentalpos.data.models.Language;
 import uk.hpkns.dvdrentalpos.data.repositories.LanguageRepository;
 

@@ -1,7 +1,6 @@
-package uk.hpkns.dvdrentalpos;
+package uk.hpkns.dvdrentalpos.api.v1.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
-import uk.hpkns.dvdrentalpos.api.v1.controllers.StaffController;
 import uk.hpkns.dvdrentalpos.data.models.Staff;
 import uk.hpkns.dvdrentalpos.data.repositories.StaffRepository;
 

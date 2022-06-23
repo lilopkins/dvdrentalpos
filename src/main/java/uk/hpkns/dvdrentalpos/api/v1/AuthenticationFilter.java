@@ -2,7 +2,6 @@ package uk.hpkns.dvdrentalpos.api.v1;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import uk.hpkns.dvdrentalpos.data.models.auth.StaffToken;
@@ -71,6 +70,7 @@ public class AuthenticationFilter implements Filter {
                 case INVALID_TOKEN -> throw new InvalidTokenException();
                 case EXPIRED_TOKEN -> throw new ExpiredTokenException();
                 case TOKEN_USED_FROM_WRONG_ADDRESS -> throw new TokenUsedFromWrongAddressException();
+                default -> {}
             }
         }
     }

@@ -1,4 +1,4 @@
-Feature: Authentication
+Feature: Authentication through UI
   Provide authentication support for the frontend
 
   @Selenium

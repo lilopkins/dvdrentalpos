@@ -20,6 +20,7 @@ import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Random;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -30,6 +31,9 @@ public class AuthController {
     private final CustomerTokensRepository customerTokensRepository;
     private final StaffRepository staffRepository;
     private final StaffTokensRepository staffTokensRepository;
+
+    private static final String INVALID_CREDENTIALS = "Invalid username/password";
+    private static final Random RANDOM = new Random();
 
     public AuthController(CustomerLoginsRepository customerLoginsRepository, CustomerTokensRepository customerTokensRepository, StaffRepository staffRepository, StaffTokensRepository staffTokensRepository) {
         this.customerLoginsRepository = customerLoginsRepository;
@@ -75,7 +79,7 @@ public class AuthController {
                 staffTokensRepository.save(token);
                 return new TokenPayload(staff.get().getUsername(), "staff", token.getToken());
             }
-            return new TokenPayload("Invalid username/password");
+            return new TokenPayload(INVALID_CREDENTIALS);
         }
 
         // Check for customer
@@ -90,14 +94,14 @@ public class AuthController {
                 customerTokensRepository.save(token);
                 return new TokenPayload(customer.get().getUsername(), "cust", token.getToken());
             }
-            return new TokenPayload("Invalid username/password");
+            return new TokenPayload(INVALID_CREDENTIALS);
         }
 
-        return new TokenPayload("Invalid username/password");
+        return new TokenPayload(INVALID_CREDENTIALS);
     }
 
     private static String generateToken(String ip) {
-        String tokenBasis = ip + ":" + (int)(Math.random() * 100000);
+        String tokenBasis = ip + ":" + RANDOM.nextInt(100000);
         return getSha1Hash(tokenBasis);
     }
 

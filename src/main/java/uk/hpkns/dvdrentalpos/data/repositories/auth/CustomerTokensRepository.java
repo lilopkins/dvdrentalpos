@@ -1,7 +1,6 @@
 package uk.hpkns.dvdrentalpos.data.repositories.auth;
 
 import org.springframework.data.repository.CrudRepository;
-import uk.hpkns.dvdrentalpos.data.models.auth.CustomerLogin;
 import uk.hpkns.dvdrentalpos.data.models.auth.CustomerToken;
 
 import java.util.Optional;

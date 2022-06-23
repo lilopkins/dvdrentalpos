@@ -3,6 +3,8 @@ package uk.hpkns.dvdrentalpos.api.v1.controllers;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.*;
 import uk.hpkns.dvdrentalpos.api.v1.AuthenticationFilter;
+import uk.hpkns.dvdrentalpos.api.v1.InvalidTokenException;
+import uk.hpkns.dvdrentalpos.api.v1.NoTokenGivenException;
 import uk.hpkns.dvdrentalpos.data.models.Staff;
 import uk.hpkns.dvdrentalpos.data.models.auth.CustomerLogin;
 import uk.hpkns.dvdrentalpos.data.models.auth.CustomerToken;
@@ -39,6 +41,22 @@ public class AuthController {
     @GetMapping("/status")
     public @ResponseBody AuthenticationFilter.AuthenticationResult getStatus(HttpServletRequest request) {
         return (AuthenticationFilter.AuthenticationResult) request.getAttribute(AuthenticationFilter.ATTRIBUTE);
+    }
+
+    @GetMapping("/profile")
+    public @ResponseBody Object getProfile(HttpServletRequest request) {
+        String token = request.getHeader("x-token");
+        if (token == null) throw new NoTokenGivenException();
+
+        Optional<StaffToken> staffToken = staffTokensRepository.findByToken(token);
+        Optional<CustomerToken> customerToken = customerTokensRepository.findByToken(token);
+        if (staffToken.isPresent()) {
+            return staffToken.get().getStaff();
+        } else if (customerToken.isPresent()) {
+            return customerToken.get().getCustomer();
+        } else {
+            throw new InvalidTokenException();
+        }
     }
 
     @PostMapping("/signin")

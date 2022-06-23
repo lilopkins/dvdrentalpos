@@ -3,18 +3,26 @@ package uk.hpkns.dvdrentalpos;
 import org.junit.jupiter.api.BeforeEach;
 import uk.hpkns.dvdrentalpos.api.v1.controllers.FilmsController;
 import uk.hpkns.dvdrentalpos.data.models.Film;
+import uk.hpkns.dvdrentalpos.data.repositories.ActorRepository;
+import uk.hpkns.dvdrentalpos.data.repositories.CategoryRepository;
 import uk.hpkns.dvdrentalpos.data.repositories.FilmRepository;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.mock;
 
 public class FilmControllerTests extends ModelControllerTests<Film, Integer, FilmRepository, FilmsController> {
+
+    private CategoryRepository categoryRepository;
+    private ActorRepository actorRepository;
 
     @Override
     @BeforeEach
     public void setup() {
         repository = mock(FilmRepository.class);
-        controller = new FilmsController(repository);
+        categoryRepository = mock(CategoryRepository.class);
+        actorRepository = mock(ActorRepository.class);
+        controller = new FilmsController(repository, categoryRepository, actorRepository);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package uk.hpkns.dvdrentalpos.data.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import uk.hpkns.dvdrentalpos.data.HasIdentity;
 import uk.hpkns.dvdrentalpos.data.Updatable;
@@ -16,13 +17,17 @@ public class Staff implements Updatable<Staff>, HasIdentity<Integer> {
     @ManyToOne
     @JoinColumn(name = "address_id")
     Address address;
+    @JsonIgnore
     byte[] picture;
     String email;
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "store_id")
     Store store;
     boolean active;
+    @JsonIgnore
     String username;
+    @JsonIgnore
     String password;
 
     public Staff() {

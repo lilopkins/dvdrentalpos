@@ -11,4 +11,3 @@ services:
       MYSQL_PASSWORD: t20s22i
     volumes:
       - ./initdb:/docker-entrypoint-initdb.d
-

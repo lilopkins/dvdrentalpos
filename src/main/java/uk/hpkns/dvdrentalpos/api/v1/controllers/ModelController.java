@@ -42,7 +42,7 @@ public abstract class ModelController<T extends Updatable<T>, I, R extends CrudR
         return create(obj);
     }
 
-    public @ResponseBody T create(@RequestBody T obj) {
+    public @ResponseBody T create(T obj) {
         repository.save(obj);
         return obj;
     }
@@ -54,7 +54,7 @@ public abstract class ModelController<T extends Updatable<T>, I, R extends CrudR
         return update(id, upd);
     }
 
-    public @ResponseBody T update(@PathVariable(value = "id") I id, @RequestBody T upd) {
+    public @ResponseBody T update(I id, T upd) {
         Optional<T> possiblyObj = repository.findById(id);
         if (possiblyObj.isEmpty()) throw new ResourceNotFoundException();
         T obj = possiblyObj.get();
@@ -70,7 +70,7 @@ public abstract class ModelController<T extends Updatable<T>, I, R extends CrudR
         delete(id);
     }
 
-    public @ResponseBody void delete(@PathVariable(value = "id") I id) {
+    public @ResponseBody void delete(I id) {
         repository.deleteById(id);
     }
 }

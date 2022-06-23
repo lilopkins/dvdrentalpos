@@ -25,12 +25,6 @@ CREATE TABLE `customer_tokens` (
         ON DELETE CASCADE
 );
 
-DELIMITER ;;
-CREATE TRIGGER `ins_customer_token` AFTER INSERT ON `customer_tokens` FOR EACH ROW BEGIN
-    DELETE FROM `customer_tokens` WHERE `valid_until` < CURRENT_TIMESTAMP;
-END;;
-DELIMITER ;
-
 CREATE TABLE `staff_tokens` (
     `staff_id` TINYINT(3) UNSIGNED NOT NULL,
     `token` VARCHAR(64) NOT NULL,
@@ -44,11 +38,19 @@ CREATE TABLE `staff_tokens` (
         ON DELETE CASCADE
 );
 
-DELIMITER ;;
-CREATE TRIGGER `ins_staff_token` AFTER INSERT ON `customer_tokens` FOR EACH ROW BEGIN
-    DELETE FROM `customer_tokens` WHERE `valid_until` < CURRENT_TIMESTAMP;
-END;;
-DELIMITER ;
+-- Update default auto-increments
+ALTER TABLE actor AUTO_INCREMENT = 201;
+ALTER TABLE address AUTO_INCREMENT = 606;
+ALTER TABLE category AUTO_INCREMENT = 17;
+ALTER TABLE city AUTO_INCREMENT = 601;
+ALTER TABLE country AUTO_INCREMENT = 110;
+ALTER TABLE customer AUTO_INCREMENT = 600;
+ALTER TABLE film AUTO_INCREMENT = 1001;
+ALTER TABLE language AUTO_INCREMENT = 7;
+ALTER TABLE payment AUTO_INCREMENT = 16050;
+ALTER TABLE rental AUTO_INCREMENT = 16050;
+ALTER TABLE staff AUTO_INCREMENT = 3;
+ALTER TABLE store AUTO_INCREMENT = 3;
 
 -- Add example customer login
 INSERT INTO `customer_logins` (`customer_id`, `username`, `password_hash`) VALUES (1, "Mary", "8cb2237d0679ca88db6464eac60da96345513964");

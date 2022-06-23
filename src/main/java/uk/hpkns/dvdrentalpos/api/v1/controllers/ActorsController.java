@@ -19,6 +19,12 @@ public class ActorsController extends ModelController<Actor, Integer, ActorRepos
         this.repository = repository;
     }
 
+    @GetMapping("/search")
+    public @ResponseBody Iterable<Actor> search(@RequestParam(name = "q") String query) {
+        query = "%" + query + "%";
+        return repository.findAllByFirstNameLikeOrLastNameLike(query, query);
+    }
+
     @GetMapping("/{id}/films")
     public @ResponseBody Iterable<Film> getFilms(@PathVariable(value = "id") Integer id) {
         Optional<Actor> actor = this.repository.findById(id);

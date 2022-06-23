@@ -1,6 +1,8 @@
 package uk.hpkns.dvdrentalpos.data.models.auth;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import uk.hpkns.dvdrentalpos.data.models.Staff;
 
 import java.time.LocalDateTime;
 
@@ -10,6 +12,10 @@ public class StaffToken {
 
     @Id
     int staffId;
+    @JsonIgnore
+    @OneToOne
+    @JoinColumn(name = "staff_id")
+    Staff staff;
     String token;
     String validFromIp;
     LocalDateTime validUntil;
@@ -26,6 +32,10 @@ public class StaffToken {
 
     public int getStaffId() {
         return staffId;
+    }
+
+    public Staff getStaff() {
+        return staff;
     }
 
     public String getToken() {

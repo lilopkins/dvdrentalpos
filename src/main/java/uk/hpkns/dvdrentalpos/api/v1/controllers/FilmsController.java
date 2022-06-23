@@ -62,7 +62,11 @@ public class FilmsController extends ModelController<Film, Integer, FilmReposito
             throw new ResourceNotFoundException();
         }
         Film film = filmOpt.get();
-        Actor actor = actorRepository.findById(actorId).get();
+        Optional<Actor> actorOpt = actorRepository.findById(actorId);
+        if (actorOpt.isEmpty()) {
+            throw new ResourceNotFoundException();
+        }
+        Actor actor = actorOpt.get();
         film.getActors().add(actor);
         repository.save(film);
     }
@@ -80,7 +84,12 @@ public class FilmsController extends ModelController<Film, Integer, FilmReposito
             throw new ResourceNotFoundException();
         }
         Film film = filmOpt.get();
-        film.getActors().remove(actorRepository.findById(actorId).get());
+        Optional<Actor> actorOpt = actorRepository.findById(actorId);
+        if (actorOpt.isEmpty()) {
+            throw new ResourceNotFoundException();
+        }
+        Actor actor = actorOpt.get();
+        film.getActors().remove(actor);
         repository.save(film);
     }
 }

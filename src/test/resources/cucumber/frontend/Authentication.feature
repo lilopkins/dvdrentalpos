@@ -4,27 +4,20 @@ Feature: Authentication through UI
   @Selenium
   Scenario: Sign in as a staff member
     Given I navigate to "/signin"
-    And I have the credentials
-    | username | password |
-    | Mike     | 12345    |
-    When I enter the credentials and press sign in
+    When I enter the credentials "Mike" "12345" and press sign in
     Then I am signed in as a "staff"
+    And the robot quits
 
   @Selenium
   Scenario: Sign in as a customer
     Given I navigate to "/signin"
-    And I have the credentials
-    | username | password      |
-    | Janet    | jeremybearimy |
-    When I enter the credentials and press sign in
+    When I enter the credentials "Mary" "12345" and press sign in
     Then I am signed in as a "cust"
+    And the robot quits
 
   @Selenium
   Scenario: Attempt a sign in with invalid credentials
     Given I navigate to "/signin"
-    And I have the credentials
-    | username | password |
-    | Mike     | wrong    |
-    | wrong    | wrong    |
-    When I enter the credentials and press sign in
+    When I enter the credentials "Janet" "jeremybearimy" and press sign in
     Then An error appears showing "Invalid username/password"
+    And the robot quits

@@ -6,6 +6,6 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(plugin = { "pretty", "html:target/cucumber-report.html" },
-    features = "src/test/resources/cucumber",
+    features = "src/test/resources/cucumber/frontend",
     glue = "uk.hpkns.dvdrentalpos.cucumber")
-public class CucumberTests { }
+public class SeleniumCucumberTests { }

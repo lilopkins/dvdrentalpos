@@ -92,7 +92,7 @@
         <version>2.12.4</version>
         <configuration>
           <includes>
-            <include>**/CucumberTests.java</include>
+            <include>**/*CucumberTests.java</include>
           </includes>
         </configuration>
       </plugin>

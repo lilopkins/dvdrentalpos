@@ -105,7 +105,7 @@ public class AuthController {
         return getSha1Hash(tokenBasis);
     }
 
-    private static String getSha1Hash(String input) {
+    protected static String getSha1Hash(String input) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-1");
             byte[] messageDigest = md.digest(input.getBytes());
@@ -120,7 +120,7 @@ public class AuthController {
         }
     }
 
-    private static class AuthPayload {
+    protected static class AuthPayload {
         String username;
         String password;
 
@@ -131,9 +131,17 @@ public class AuthController {
         public void setPassword(String password) {
             this.password = password;
         }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public String getPassword() {
+            return password;
+        }
     }
 
-    private static class TokenPayload {
+    protected static class TokenPayload {
         boolean success;
         String message;
         String username;

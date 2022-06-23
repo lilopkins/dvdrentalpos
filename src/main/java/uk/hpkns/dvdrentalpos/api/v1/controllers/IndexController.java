@@ -15,7 +15,7 @@ public class IndexController {
         return new ApiInfo(request);
     }
 
-    private static class ApiInfo {
+    protected static class ApiInfo {
         boolean alive = true;
         LocalDateTime serverTime;
         String remoteAddr;

@@ -29,6 +29,12 @@ public class Category implements Updatable<Category>, HasIdentity<Integer> {
         this.name = name;
     }
 
+    public Category(int id, String name, Film... films) {
+        this.id = id;
+        this.name = name;
+        this.films = Set.of(films);
+    }
+
     public Category() {
         // required empty constructor for jakarta
     }

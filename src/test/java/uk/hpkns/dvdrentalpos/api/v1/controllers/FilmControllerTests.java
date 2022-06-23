@@ -1,14 +1,21 @@
 package uk.hpkns.dvdrentalpos.api.v1.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.data.domain.Pageable;
+import uk.hpkns.dvdrentalpos.api.v1.ResourceNotFoundException;
+import uk.hpkns.dvdrentalpos.data.models.Actor;
+import uk.hpkns.dvdrentalpos.data.models.Category;
 import uk.hpkns.dvdrentalpos.data.models.Film;
 import uk.hpkns.dvdrentalpos.data.repositories.ActorRepository;
 import uk.hpkns.dvdrentalpos.data.repositories.CategoryRepository;
 import uk.hpkns.dvdrentalpos.data.repositories.FilmRepository;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.mockito.Mockito.mock;
+import java.util.Optional;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class FilmControllerTests extends ModelControllerTests<Film, Integer, FilmRepository, FilmsController> {
 
@@ -77,5 +84,44 @@ public class FilmControllerTests extends ModelControllerTests<Film, Integer, Fil
         assertEquals(4.99f, obj.getReplacementCost(), "replacement cost incorrect");
         assertEquals("PG", obj.getRating(), "rating incorrect");
         assertEquals("", obj.getSpecialFeatures(), "special features incorrect");
+    }
+
+    @Test
+    public void testGetFilmsByCategory() {
+        Film f = new Film();
+        when(categoryRepository.findById(1)).thenReturn(Optional.of(new Category(1, "Test", f)));
+        Iterable<Film> films = controller.getFilmsByCategory(1, Pageable.unpaged());
+        assertNotNull(films);
+        assertEquals(f, films.iterator().next());
+
+        when(categoryRepository.findById(2)).thenReturn(Optional.empty());
+        assertThrows(ResourceNotFoundException.class, () -> controller.getFilmsByCategory(2, null));
+    }
+
+    @Test
+    public void testAddActors() {
+        Actor a = new Actor();
+        Set<Actor> actors = mock(Set.class);
+        Film f = new Film(actors);
+        when(repository.findById(1)).thenReturn(Optional.of(f));
+        when(actorRepository.findById(2)).thenReturn(Optional.of(a));
+
+        controller.addActors(1, 2);
+        verify(actors).add(a);
+        verify(repository).save(f);
+    }
+
+    @Test
+    public void testRemoveActors() {
+        Actor a = new Actor();
+        Set<Actor> actors = mock(Set.class);
+        Film f = new Film(actors);
+
+        when(repository.findById(1)).thenReturn(Optional.of(f));
+        when(actorRepository.findById(2)).thenReturn(Optional.of(a));
+
+        controller.removeActors(1, 2);
+        verify(actors).remove(a);
+        verify(repository).save(f);
     }
 }

@@ -43,6 +43,11 @@ public class Film implements Updatable<Film>, HasIdentity<Integer> {
         // required empty constructor for jakarta
     }
 
+    public Film(Set<Actor> actors) {
+        // for testing
+        this.actors = actors;
+    }
+
     public Film(int id, String title, String description, int releaseYear, Language language, Language originalLanguage, int rentalDuration, float rentalRate, int length, float replacementCost, String rating, String specialFeatures) {
         this.id = id;
         this.title = title;

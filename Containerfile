@@ -3,7 +3,7 @@ WORKDIR /usr/src/myapp
 COPY . .
 RUN mvn clean package
 
-FROM docker.io/eclipse-temurin:17-jre-alpine AS deploy
+FROM docker.io/eclipse-temurin:17-jre AS deploy
 WORKDIR /usr/src/myapp
 COPY --from=build /usr/src/myapp/target/dvdrentalpos-*.jar dvdrentalpos.jar
 

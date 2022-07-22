@@ -1,7 +1,7 @@
 FROM docker.io/eclipse-temurin:17 AS build
 WORKDIR /usr/src/myapp
 COPY . .
-RUN ./mvn clean package
+RUN sh mvn clean package
 
 FROM docker.io/eclipse-temurin:17-jre AS deploy
 WORKDIR /usr/src/myapp

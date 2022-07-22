@@ -39,7 +39,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         context: .
-        platforms: linux/amd64,linux/arm/v7,linux/arm64
+        platforms: linux/amd64,linux/arm64 # linux/arm/v7, (bug, not fixed)
         push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest,${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
         file: ./Containerfile
